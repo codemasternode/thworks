@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node ./src/index.js",
+    "dev-1": "nodemon --exec babel-node ./src/index.js",
+    "dev-2": "nodemon --exec babel-node ./src/index2.js",
     "start": "babel-node ./src/index.js",
     "test": "./node_modules/.bin/mocha --require @babel/register --recursive './test/**/*.spec.js'",
     "build": "npm install --prefix client && npm install && npm run build --prefix client && babel src --out-dir ./dist --source-maps",
