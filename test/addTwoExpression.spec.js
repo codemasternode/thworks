@@ -239,7 +239,54 @@ describe("Test addTwoExpression function", () => {
     })
 
     describe("should throw error", () => {
-
+        it("when passing different types than array", (done) => {
+            expect(function () { addTwoExpressions("str", "str2") }).to.throw("You have to pass two arguments as arrays")
+            done()
+        })
+        it("when called without arguments", (done) => {
+            expect(function () { addTwoExpressions() }).to.throw("You have to pass two arguments as arrays")
+            done()
+        })
+        it("when called with only one argument", (done) => {
+            expect(function () { addTwoExpressions([{ number: 2, exponent: 10 }]) }).to.throw("You have to pass two arguments as arrays")
+            done()
+        })
+        it("when one of objects in array doesn't have number property", (done) => {
+            expect(function () {
+                addTwoExpressions(
+                    [{ exponent: 10 }],
+                    [{ number: 2, exponent: 10 }]
+                )
+            }).to.throw("Structure of objects in array is incorrect")
+            done()
+        })
+        it("when one of objects in array doesn't have exponent property", (done) => {
+            expect(function () {
+                addTwoExpressions(
+                    [{ number: 4, exponent: 10 }],
+                    [{ number: 2 }]
+                )
+            }).to.throw("Structure of objects in array is incorrect")
+            done()
+        })
+        it("when number property in one of objects in array is different type than number", (done) => {
+            expect(function () {
+                addTwoExpressions(
+                    [{ number: 4, exponent: 10 }],
+                    [{ number: "2", exponent: 15 }]
+                )
+            }).to.throw("Structure of objects in array is incorrect")
+            done()
+        })
+        it("when exponent property in one of objects in array is different type than number", (done) => {
+            expect(function () {
+                addTwoExpressions(
+                    [{ number: 4, exponent: "10" }],
+                    [{ number: 2, exponent: 10 }]
+                )
+            }).to.throw("Structure of objects in array is incorrect")
+            done()
+        })
     })
 
 

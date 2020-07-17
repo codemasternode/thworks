@@ -21,10 +21,18 @@ const bExpression = [
 ]
 
 function addTwoExpressions(a, b) {
+
+    if (!Array.isArray(a) || !Array.isArray(b)) {
+        throw new Error("You have to pass two arguments as arrays")
+    }
+
     let array = a.concat(b)
 
     const groupByObject = {}
     for (let i = array.length; i--;) {
+        if (typeof array[i].number !== "number" || typeof array[i].exponent !== "number") {
+            throw new Error("Structure of objects in array is incorrect")
+        }
         const expression = array[i]
         if (!groupByObject[expression.exponent]) {
             groupByObject[expression.exponent] = expression.number
@@ -47,5 +55,5 @@ function addTwoExpressions(a, b) {
     return array
 }
 
-//console.log(addTwoExpressions(aExpression, bExpression)) //example of execution
+//console.log(addTwoExpressions(aExpression, bExpression)) //uncomment to see an example of execution
 export { addTwoExpressions }
