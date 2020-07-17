@@ -12,9 +12,9 @@
 
 # Installation and setup
 
-`
+```
 git clone https://github.com/codemasternode/thworks.git thworks
 cd thworks
 npm install
-`
+```
 
