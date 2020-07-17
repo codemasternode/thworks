@@ -1,11 +1,11 @@
 const aExpression = [
     {
         number: 2,
-        exponent: -2
+        exponent: 2
     },
     {
         number: 3,
-        exponent: 0
+        exponent: 0 // 3x^0 = 3 * 1 = 3
     }
 ]
 
@@ -21,7 +21,7 @@ const bExpression = [
 ]
 
 function addTwoExpressions(a, b) {
-    const array = a.concat(b)
+    let array = a.concat(b)
 
     const groupByObject = {}
     for (let i = array.length; i--;) {
@@ -33,15 +33,19 @@ function addTwoExpressions(a, b) {
         }
     }
 
-    const result = []
+    array = []
     for (let key in groupByObject) {
-        result.push({
+        if (groupByObject[key] === 0) {
+            continue
+        }
+        array.push({
             exponent: Number(key),
             number: groupByObject[key]
         })
     }
+
+    return array
 }
 
-addTwoExpressions(aExpression, bExpression) //example of execution
-
-export default addTwoExpressions
+//console.log(addTwoExpressions(aExpression, bExpression)) //example of execution
+export { addTwoExpressions }
