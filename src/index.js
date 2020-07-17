@@ -55,5 +55,5 @@ function addTwoExpressions(a, b) {
     return array
 }
 
-//console.log(addTwoExpressions(aExpression, bExpression)) //uncomment to see an example of execution
+// console.log(addTwoExpressions(aExpression, bExpression)) //uncomment to see an example of execution
 export { addTwoExpressions }
